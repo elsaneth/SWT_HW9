@@ -27,6 +27,9 @@ public class MinimumBinaryHeap {
 	 * @return Element at the top of the heap.
 	 */
 	public int exractMin() {
+		if (heap.isEmpty()) {
+			throw new IllegalArgumentException("Cannot extract from an empty heap");
+		}
 		int min = heap.get(0);
 		int leaf = heap.get(heap.size()-1);
 		heap.set(0, leaf);
@@ -95,7 +98,7 @@ public class MinimumBinaryHeap {
 		int index = heap.indexOf(element);
 		if (index == heap.size()-1) {
 			heap.remove(heap.size()-1);
-			return false;
+			return true;
 		}
 		
 		heap.set(index, heap.get(heap.size()-1));
@@ -118,5 +121,5 @@ public class MinimumBinaryHeap {
 	public List<Integer> getArray() {
 		return heap;
 	}
-	
+
 }
